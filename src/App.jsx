@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Import necessary dependencies
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
-function App() {
-  const [count, setCount] = useState(0)
+// Components for different routes
+import CurriculumVitae from './routes/cv';
+import Home from './routes/home';
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const router = createHashRouter([
+  {
+    path: '/',
+    element: <Home/>
+  },
+  {
+    path: '/cv',
+    element: <CurriculumVitae/>
+  }
+])
+
+// Configure the router in your main component
+const App = _ => <RouterProvider router={router}/>
 
 export default App
